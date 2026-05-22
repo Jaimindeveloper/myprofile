@@ -1,0 +1,224 @@
+/* App/Global.css - Jaimin Suthar Portfolio Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* HSL Color System - Light Professional Mode */
+  --bg-primary: 210 20% 98%;       /* Soft light gray background */
+  --bg-secondary: 0 0% 100%;       /* Pure white for cards */
+  --bg-card-glass: 0 0% 100%;      /* Glassmorphism base */
+  
+  --border-color: 220 13% 91%;     /* Light border */
+  --border-glow: 262 83% 58%;      /* Glowing state */
+  
+  --text-primary: 222 47% 11%;     /* Dark charcoal text for readability */
+  --text-secondary: 0 0% 0%;   /* Black primary secondary text */
+  --text-dim: 215 14% 65%;         /* Muted meta details */
+  
+  --accent-purple: 262 83% 58%;    /* Cosmic Violet #8B5CF6 */
+  --accent-cyan: 199 89% 48%;      /* Deepened Cyan for light mode */
+  --accent-pink: 320 85% 60%;      /* Tech Accent Pink */
+  
+  /* Fonts */
+  --font-header: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Layout */
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --border-radius-xl: 32px;
+  
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Global Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: hsl(var(--bg-primary));
+  color: hsl(var(--text-primary));
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium Radial Background Grid - Light Mode */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 40%),
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Glassmorphism Card Style - Light Mode */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  transition: var(--transition-smooth);
+}
+
+.glass-panel:hover {
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+}
+
+/* Premium Typography classes */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: hsl(var(--text-primary));
+}
+
+p {
+  color: hsl(var(--text-secondary));
+  line-height: 1.6;
+}
+
+/* Dynamic Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--accent-purple)) 0%, hsl(var(--accent-cyan)) 50%, hsl(var(--accent-pink)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.gradient-cyan-purple {
+  background: linear-gradient(135deg, hsl(var(--accent-cyan)) 0%, hsl(var(--accent-purple)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Custom Interactive Scrollbar - Light Mode */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--bg-primary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: var(--border-radius-sm);
+  border: 2px solid hsl(var(--bg-primary));
+  transition: var(--transition-smooth);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.4);
+}
+
+/* Button & interactive components */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, hsl(var(--accent-purple)) 0%, rgba(139, 92, 246, 0.8) 100%);
+  color: #fff;
+  border: none;
+  font-family: var(--font-header);
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.25);
+  transition: var(--transition-spring);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.03);
+  color: hsl(var(--text-primary));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: var(--font-header);
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Neon Glow Effect */
+.glow-accent {
+  position: relative;
+}
+
+.glow-accent::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, hsl(var(--accent-purple)), hsl(var(--accent-cyan)));
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: var(--transition-smooth);
+  filter: blur(8px);
+}
+
+.glow-accent:hover::after {
+  opacity: 0.5;
+}
+
+/* Responsive grid helpers */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.section-spacing {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+  .section-spacing {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}

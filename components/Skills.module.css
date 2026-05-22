@@ -1,0 +1,176 @@
+/* components/Skills.module.css */
+.skillsSection {
+  position: relative;
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  z-index: 2;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sectionHeader {
+  max-width: 700px;
+  margin-bottom: 50px;
+}
+
+.sectionTitle {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.sectionDesc {
+  font-size: 16px;
+  color: hsl(var(--text-secondary));
+  line-height: 1.6;
+}
+
+/* Tab Layouts */
+.tabWrapper {
+  width: 100%;
+  margin-bottom: 40px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabWrapper::-webkit-scrollbar {
+  height: 5px;
+}
+
+.tabWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tabWrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 9999px;
+}
+
+.tabContainer {
+  display: flex;
+  gap: 10px;
+  min-width: max-content;
+  background: rgba(11, 15, 28, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 6px;
+  border-radius: 9999px;
+}
+
+.tabBtn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  transition: var(--transition-smooth);
+}
+
+.btnContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-header);
+  font-size: 14px;
+  font-weight: 600;
+  color: hsl(var(--text-secondary));
+  transition: var(--transition-smooth);
+}
+
+.tabBtn:hover .btnContent {
+  color: hsl(var(--text-primary));
+}
+
+.activeTab .btnContent {
+  color: hsl(var(--text-primary));
+}
+
+.activeIndicator {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 9999px;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+  z-index: 1;
+}
+
+/* Skills Cards Grid */
+.skillsGridWrapper {
+  min-height: 280px;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .skillsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skillCard {
+  background: rgba(11, 15, 28, 0.45);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  transition: var(--transition-smooth);
+}
+
+.skillHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.skillName {
+  font-family: var(--font-header);
+  font-size: 16px;
+  font-weight: 700;
+  color: hsl(var(--text-primary));
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.starFilled {
+  color: #F59E0B;
+  fill: #F59E0B;
+  filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.4));
+}
+
+.starEmpty {
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.skillDesc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: hsl(var(--text-secondary));
+}

@@ -1,0 +1,293 @@
+/* components/Experience.module.css */
+.expSection {
+  position: relative;
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  z-index: 2;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sectionHeader {
+  max-width: 700px;
+  margin-bottom: 60px;
+}
+
+.sectionTitle {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.sectionDesc {
+  font-size: 16px;
+  color: hsl(var(--text-secondary));
+}
+
+/* Timeline Layout */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 45px;
+}
+
+.timelineLine {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 17px;
+  width: 2px;
+  background: linear-gradient(180deg, 
+    hsl(var(--accent-purple)) 0%, 
+    hsl(var(--accent-cyan)) 50%, 
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  opacity: 0.3;
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* Timeline Node */
+.timelineNode {
+  position: absolute;
+  left: -45px;
+  top: 15px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: hsl(var(--bg-secondary));
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: var(--transition-smooth);
+}
+
+.nodeIcon {
+  color: hsl(var(--text-secondary));
+  transition: var(--transition-smooth);
+}
+
+.activeNode {
+  border-color: hsl(var(--accent-cyan));
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+  background: hsl(var(--bg-primary));
+}
+
+.activeNode .nodeIcon {
+  color: hsl(var(--accent-cyan));
+}
+
+/* Timeline Card */
+.card {
+  background: rgba(11, 15, 28, 0.45);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: var(--border-radius-lg);
+  padding: 24px 30px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.card:hover {
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(11, 15, 28, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.expandedCard {
+  border-color: rgba(139, 92, 246, 0.2);
+  background: rgba(11, 15, 28, 0.7);
+  box-shadow: 0 15px 40px rgba(139, 92, 246, 0.05);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.period {
+  font-family: var(--font-header);
+  font-size: 13px;
+  font-weight: 600;
+  color: hsl(var(--accent-purple));
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.roleTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: hsl(var(--text-primary));
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.companyName {
+  font-size: 14px;
+  font-weight: 500;
+  color: hsl(var(--text-primary));
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.bullet {
+  color: rgba(0, 0, 0, 0.15);
+}
+
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: hsl(0deg 0% 87.55%);
+}
+
+.toggleBtn {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: hsl(var(--text-secondary));
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.card:hover .toggleBtn {
+  color: hsl(var(--text-primary));
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.expandedCard .toggleBtn {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.2);
+  color: hsl(var(--accent-purple));
+}
+
+/* Expanded timeline contents */
+.expandedContent {
+  overflow: hidden;
+}
+
+.contentInner {
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+.secLabel {
+  font-family: var(--font-header);
+  font-size: 14px;
+  font-weight: 600;
+  color: hsl(var(--text-primary));
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bulletsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.bulletsList li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: hsl(var(--text-primary));
+}
+
+.bulletsList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: hsl(var(--accent-cyan));
+  box-shadow: 0 0 6px hsl(var(--accent-cyan));
+}
+
+.skillsTagWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillTag {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: hsl(var(--accent-cyan));
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+@media (max-width: 640px) {
+  .timeline {
+    padding-left: 30px;
+  }
+  
+  .timelineLine {
+    left: 7px;
+  }
+  
+  .timelineNode {
+    left: -33px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .nodeIcon {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .card {
+    padding: 16px 20px;
+  }
+  
+  .roleTitle {
+    font-size: 18px;
+  }
+  
+  .companyName {
+    font-size: 13px;
+  }
+}
