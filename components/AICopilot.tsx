@@ -62,7 +62,7 @@ public void SaveUser(User u) {
     if (!query.trim() || chatLoading) return;
 
     if (!customMsg) setInputVal("");
-    
+
     // Add user message
     setMessages((prev) => [...prev, { sender: "user", text: query }]);
     setChatLoading(true);
@@ -73,12 +73,18 @@ public void SaveUser(User u) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "chat", message: query }),
       });
+
       const data = await response.json();
-      setMessages((prev) => [...prev, { sender: "bot", text: data.response || "No response received." }]);
+      if (response.ok && data.response) {
+        setMessages((prev) => [...prev, { sender: "bot", text: data.response }]);
+      } else {
+        const errorMsg = data.error || "No response received.";
+        setMessages((prev) => [...prev, { sender: "bot", text: errorMsg }]);
+      }
     } catch (err) {
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "Apologies, I encountered an internal communication error. Please try again." },
+        { sender: "bot", text: "Apologies, an internal error occurred. Please try again." },
       ]);
     } finally {
       setChatLoading(false);

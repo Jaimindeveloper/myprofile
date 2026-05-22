@@ -128,12 +128,17 @@ export async function POST(req: Request) {
         return NextResponse.json({ response: fallbackText });
       }
 
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
       const prompt = `${JAIMIN_BIO_SYSTEM_PROMPT}\n\nVisitor Question: "${message}"\n\nAI Answer:`;
-      const result = await model.generateContent(prompt);
-      const textResponse = result.response.text();
-
-      return NextResponse.json({ response: textResponse });
+      try {
+        const result = await model.generateContent(prompt);
+        const textResponse = result.response.text();
+        return NextResponse.json({ response: textResponse });
+      } catch (err) {
+        // Fallback to static response if Gemini API fails
+        const fallbackText = getFallbackChatResponse(message);
+        return NextResponse.json({ response: fallbackText });
+      }
     }
 
     // Code Reviewer functionality
